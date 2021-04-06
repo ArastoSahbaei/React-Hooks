@@ -1,9 +1,17 @@
-import React from 'react'
+import React, { useState, useCallback } from 'react'
 
 export const UseCallback = () => {
-	return (
-		<div>
+	const [count, setcount] = useState(60)
+	const showCount = useCallback(() => { alert(`Count: ${count}`) }, [count])
 
-		</div>
+	return (
+		<>
+			<randomChildComponent handler={showCount} />
+		</>
 	)
 }
+
+/*
+	useCallback is required when you want to avoid
+	unneccecary re-renders of any child component
+*/
